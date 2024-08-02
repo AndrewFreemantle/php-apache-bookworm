@@ -19,10 +19,11 @@ jobs:
         with:
           images: |
             andrewfreemantle/php-apache-bookworm
-          flavor: |
-            latest=auto
           labels: |
             maintainer=AndrewFreemantle
+          tags: |
+            # set latest tag for default branch
+            type=raw,value=latest,enable={{is_default_branch}}
       -
         name: Login to Docker Hub
         uses: docker/login-action@v3
