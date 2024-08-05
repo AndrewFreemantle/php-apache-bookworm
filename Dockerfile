@@ -1,4 +1,4 @@
-FROM php:7-apache
+FROM php:apache-bookworm
 
 RUN a2enmod rewrite
 
