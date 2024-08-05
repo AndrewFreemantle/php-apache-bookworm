@@ -18,7 +18,7 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: |
-            andrewfreemantle/php-apache-bookworm
+            andrewfreemantle/php-apache-wordpress
           labels: |
             maintainer=AndrewFreemantle
           tags: |
