@@ -4,36 +4,39 @@ RUN a2enmod rewrite
 
 ADD --chmod=0755 https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 
+# https://make.wordpress.org/hosting/handbook/server-environment/#php-extensions
+
+# Required (those commented out are already enabled)
 RUN install-php-extensions \
-		# apc \
-		apcu \
-		bcmath \
-		bz2 \
-		calendar \
+		# json \
+		mysqli
+
+# Highly recommended
+RUN install-php-extensions \
+		# curl \
+		# dom \
 		exif \
-		ffi \
-		gd \
-		gettext \
-		gmp \
+		# fileinfo \
+		# hash \
+		igbinary \
 		imagick \
 		intl \
-		mysqli \
-		mysqlnd \
-		pcntl \
-		pdo \
-		pdo_mysql \
-		pspell \
-		shmop \
-		soap \
-		sockets \
-		sysvmsg \
-		sysvsem \
-		sysvshm \
-		tidy \
-		xmlrpc \
-		xsl \
-		opcache \
+		# mbstring \
+		# openssl \
+		# pcre \
+		# xml \
 		zip
+
+# Recommended
+RUN install-php-extensions \
+		opcache \
+		apcu
+		# memcached (need only one of ACPu, memcached or redis)
+		# redis
+
+# Optional
+RUN install-php-extensions \
+		timezonedb
 
 # Clean up
 RUN apt-get clean \
