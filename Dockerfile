@@ -38,6 +38,12 @@ RUN install-php-extensions \
 RUN install-php-extensions \
 		timezonedb
 
+# File changes, updates and plugin/theme installation
+RUN install-php-extensions \
+		ssh2 \
+		ftp \
+		sockets
+
 # Clean up
 RUN apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
